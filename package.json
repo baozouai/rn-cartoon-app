@@ -10,8 +10,21 @@
     "lint": "eslint ."
   },
   "dependencies": {
+    "@ant-design/icons-react-native": "^2.0.0",
+    "@ant-design/react-native": "^3.3.0",
+    "@react-native-community/masked-view": "^0.1.7",
+    "babel-plugin-import": "^1.13.0",
     "react": "16.11.0",
-    "react-native": "0.62.2"
+    "react-native": "0.62.2",
+    "react-native-gesture-handler": "^1.6.1",
+    "react-native-reanimated": "^1.7.1",
+    "react-native-safe-area-context": "^0.7.3",
+    "react-native-screens": "^2.4.0",
+    "react-native-swiper": "^1.5.14",
+    "react-navigation": "^4.3.3",
+    "react-navigation-stack": "^2.3.6",
+    "react-navigation-tabs": "^2.8.7",
+    "styled-components": "^5.1.0"
   },
   "devDependencies": {
     "@babel/core": "^7.9.0",
