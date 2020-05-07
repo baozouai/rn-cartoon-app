@@ -18,16 +18,18 @@ import {
 } from '../../../../util';
 function Index(props) {
     const {
+        navigation,
         book
     } = props;
+
     const { bookTitle } = book;
     const isFetchRef = useRef(false);
-
+    const articleListRef = useRef([]);
 
     const listViewProps = {
-        onFetch: (page, startFetch, abortFetch) => {
+        onFetch: async (page, startFetch, abortFetch) => {
             if (!isFetchRef.current) {
-                fetchData(page, startFetch, abortFetch, () => getArticleList(bookTitle));
+                articleListRef.current = await fetchData(page, startFetch, abortFetch, () => getArticleList(bookTitle));
                 isFetchRef.current = true;
             }
         },
@@ -38,20 +40,23 @@ function Index(props) {
             paddingBottom: 200
         }
     }
-    function renderItem(item) {
+    function renderItem(article, index) {
 
-        const { articleNum } = item;
+        const { articleNum, } = article;
+        const props = {
+            key: articleNum,
+            style: styles.numWrapper,
+            onPress: () => navigation.navigate('ImgPage', { book, article, index, articleList: articleListRef.current })
+        }
         return (
-            <TouchableOpacity style={styles.numWrapper} key={articleNum}>
+            <TouchableOpacity {...props}>
                 <Text style={styles.section}>{articleNum}</Text>
             </TouchableOpacity>
         )
     }
     return (
 
-        <ListView
-            {...listViewProps}
-        />
+        <ListView {...listViewProps} />
     )
 };
 const styles = StyleSheet.create({

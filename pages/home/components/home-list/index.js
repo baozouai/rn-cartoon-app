@@ -25,7 +25,7 @@ function Index(props) {
   function renderItem(item) {
 
     const { bookTitle, brief, imgInfo: { imgid } } = item;
-    const uri = `${baseImgUrl}${imgid}.jpg`;
+    const uri = `${baseImgUrl}bookimg/${imgid}.jpg`;
     const imgProps = {
       source: {
         uri,
