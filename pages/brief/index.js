@@ -9,6 +9,7 @@ import {
   TouchableOpacity,
   StyleSheet,
 } from 'react-native';
+import Header from '../components/header';
 import DetailDescription from './components/detail-description';
 import Directory from './components/directory';
 import { pxSize } from '../../util';
@@ -27,16 +28,18 @@ function Index(props) {
     },
     {
       title: '目录',
-      component: <Directory book={book}/>
+      component: <Directory book={book} navigation={navigation} />
     }
   ]
+  const headerProps = {
+    title: bookTitle,
+    navigation,
+  };
+
   return (
-    <SafeAreaView style={styles.wrapper}>
+    <SafeAreaView>
       {/* header start */}
-      <View style={styles.header}>
-        <Text style={styles.return} onPress={() => navigation.goBack()}>&lt; 返回</Text>
-        <Text style={styles.title}>{bookTitle}</Text>
-      </View>
+      <Header {...headerProps} />
       {/* header end */}
       {/* cover start */}
       <View style={styles.coverWrapper}>
@@ -80,23 +83,7 @@ function Index(props) {
 };
 
 const styles = StyleSheet.create({
-  wrapper: {
 
-  },
-  header: {
-    display: 'flex',
-    flexDirection: 'row',
-    alignItems: 'center',
-    justifyContent: 'flex-start',
-    height: 40,
-  },
-  return: {
-    marginLeft: 10,
-    marginRight: 10,
-  },
-  title: {
-    fontWeight: 'bold',
-  },
   coverWrapper: {
     width: '100%',
   },

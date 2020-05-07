@@ -14,6 +14,7 @@ const  onFetch = async(page = 1, startFetch, abortFetch, service) => {
       const response = await service(page);
       const data = await response.json();
       startFetch(data, pageLimit);
+      return data;
     } catch (err) {
       abortFetch();
     }
