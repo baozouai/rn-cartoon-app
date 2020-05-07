@@ -27,7 +27,7 @@ function Index(props) {
     },
     {
       title: '目录',
-      component: <Directory />
+      component: <Directory book={book}/>
     }
   ]
   return (

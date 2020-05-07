@@ -14,22 +14,14 @@ import {
   Title,
   Brief,
 } from './style';
-
+import {
+  onFetch as fetchData
+} from '../../../../util';
 
 function Index(props) {
 
   const { navigation } = props;
-  async function onFetch(page = 1, startFetch, abortFetch) {
-    try {
-      // 每次获取20条
-      const pageLimit = 20;
-      const response = await getHomeList(page);
-      const data = await response.json();
-      startFetch(data, pageLimit);
-    } catch (err) {
-      abortFetch();
-    }
-  }
+  
   function renderItem(item) {
 
     const { bookTitle, brief, imgInfo: { imgid } } = item;
@@ -54,7 +46,7 @@ function Index(props) {
     )
   }
   const listProps = {
-    onFetch,
+    onFetch: (page, startFetch, abortFetch) => fetchData(page, startFetch, abortFetch, getHomeList),
     keyExtractor: (item, index) => `${item} - ${index}`,
     renderItem,
     numColumns: 2
