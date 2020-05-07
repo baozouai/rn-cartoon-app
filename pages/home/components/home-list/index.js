@@ -1,11 +1,10 @@
 import React from 'react';
-import { Text } from 'react-native';
 import { ListView } from '@ant-design/react-native';
 import {
   getHomeList,
 } from '../../service';
 import {
-  baseUrl
+  baseImgUrl
 } from '../../../constants';
 import {
   ItemWrapper,
@@ -16,10 +15,10 @@ import {
   Brief,
 } from './style';
 
-const baseImgUrl = `${baseUrl}/img/bookimg/`;
 
-function Index() {
+function Index(props) {
 
+  const { navigation } = props;
   async function onFetch(page = 1, startFetch, abortFetch) {
     try {
       // 每次获取20条
@@ -32,8 +31,9 @@ function Index() {
     }
   }
   function renderItem(item) {
-    const { bookTitle, brief } = item;
-    const uri = baseImgUrl + item.imgInfo.imgid + '.jpg';
+
+    const { bookTitle, brief, imgInfo: { imgid } } = item;
+    const uri = `${baseImgUrl}${imgid}.jpg`;
     const imgProps = {
       source: {
         uri,
@@ -41,7 +41,8 @@ function Index() {
       resizeMode: 'cover'
     }
     return (
-      <ItemWrapper>
+      // 点击跳转到简介
+      <ItemWrapper onPress={() => navigation.navigate('Brief', { book: item, uri })}>
         <ImgWrapper>
           <Image {...imgProps} />
           <TextWrapper>
