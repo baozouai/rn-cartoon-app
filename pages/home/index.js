@@ -30,7 +30,7 @@ function Home(props) {
           </CarouselImageView>
         ))}
       </Carousel>
-      <HomeList/>
+      <HomeList navigation={navigation}/>
     </SafeAreaView>
   )
 };
