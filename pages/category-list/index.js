@@ -5,14 +5,30 @@ import {
     SafeAreaView,
     Text,
 } from 'react-native';
-import { baseImgUrl } from '../constants';
-
+import Header from '../components/header';
+import ListPage from '../components/list-page';
+import {
+    getCategoryList
+} from './service';
 
 function Index(props) {
-
+    const {
+        navigation,
+    } = props;
+    const { state: { params: { category } } } = navigation;
+    const headerProps = {
+        navigation,
+        title: category,
+    };
+    const listProps = {
+        navigation,
+        category,
+        service: getCategoryList
+    };
     return (
         <SafeAreaView>
-            <Text>category-list</Text>
+            <Header {...headerProps} />
+            <ListPage {...listProps} />
         </SafeAreaView>
     )
 };

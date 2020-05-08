@@ -1,7 +1,7 @@
 import styled from 'styled-components/native';
-import { pxSize } from '../../../../util';
+import { pxSize } from '../../../util';
 const ItemWrapper = styled.TouchableOpacity`
-    flex: 1;
+    width: ${pxSize(750 / 2)}px;
     align-items: center;
 `;
 const ImgWrapper = styled.View`

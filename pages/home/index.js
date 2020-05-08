@@ -2,12 +2,13 @@ import React from 'react';
 import {
   Carousel
 } from '@ant-design/react-native';
-import HomeList from './components/home-list';
+import HomeList from '../components/list-page';
 import {
   SafeAreaView,
   CarouselImageView,
   CarouselImage,
 } from './style';
+import { getHomeList } from './service';
 
 function Home(props) {
 
@@ -16,7 +17,10 @@ function Home(props) {
   } = props;
 
   const arr = [require('../../assets/img/swiper1.jpg'), require('../../assets/img/swiper2.jpg'), require('../../assets/img/swiper3.jpg')]
-
+  const listProps = {
+    navigation,
+    service: getHomeList,
+  }
   return (
     <SafeAreaView>
       <Carousel
@@ -30,7 +34,7 @@ function Home(props) {
           </CarouselImageView>
         ))}
       </Carousel>
-      <HomeList navigation={navigation}/>
+      <HomeList {...listProps} />
     </SafeAreaView>
   )
 };

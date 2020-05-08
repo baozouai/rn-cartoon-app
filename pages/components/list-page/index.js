@@ -1,11 +1,8 @@
 import React from 'react';
 import { ListView } from '@ant-design/react-native';
 import {
-  getHomeList,
-} from '../../service';
-import {
   baseImgUrl
-} from '../../../constants';
+} from '../../constants';
 import {
   ItemWrapper,
   ImgWrapper,
@@ -16,14 +13,13 @@ import {
 } from './style';
 import {
   onFetch as fetchData
-} from '../../../../util';
+} from '../../../util';
 
 function Index(props) {
 
-  const { navigation } = props;
-  
-  function renderItem(item) {
+  const { navigation, category, service } = props;
 
+  function renderItem(item) {
     const { bookTitle, brief, imgInfo: { imgid } } = item;
     const uri = `${baseImgUrl}bookimg/${imgid}.jpg`;
     const imgProps = {
@@ -39,14 +35,14 @@ function Index(props) {
           <Image {...imgProps} />
           <TextWrapper>
             <Title>{bookTitle}</Title>
-            <Brief numberOfLines={4}>{brief}</Brief>
+            <Brief numberOfLines={2}>{brief}</Brief>
           </TextWrapper>
         </ImgWrapper>
       </ItemWrapper>
     )
   }
   const listProps = {
-    onFetch: (page, startFetch, abortFetch) => fetchData(page, startFetch, abortFetch, getHomeList),
+    onFetch: (page, startFetch, abortFetch) => fetchData({ page, category, startFetch, abortFetch, service }),
     keyExtractor: (item, index) => `${item} - ${index}`,
     renderItem,
     numColumns: 2
