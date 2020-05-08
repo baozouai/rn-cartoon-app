@@ -26,10 +26,10 @@ function Index(props) {
         '其它漫画'
     ];
 
-    function renderItem(cate, index) {
+    function renderItem(category, index) {
         const wrapperProps = {
-            key: cate,
-            onPress: () => navigation.navigate('CategoryList'),
+            key: category,
+            onPress: () => navigation.navigate('CategoryList', { category, }),
         }
         const uri = `${baseImgUrl}cate${index + 1}.jpg`;
         const imgProps = {
@@ -42,7 +42,7 @@ function Index(props) {
             <TouchableOpacity {...wrapperProps}>
                 <View style={styles.categoryWrapper}>
                     <Image {...imgProps} />
-                    <Text style={styles.text}>{cate}</Text>
+                    <Text style={styles.text}>{category}</Text>
                 </View>
             </TouchableOpacity>
         )

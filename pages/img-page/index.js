@@ -45,7 +45,7 @@ function Index(props) {
             title: '上一话',
             path: 'ImgPage',
             props: { ...navProps, index: index + 1, article: nextArticle, },
-            show: preArticle,
+            show: nextArticle,
         },
         {
             title: '回到首页',
@@ -56,7 +56,7 @@ function Index(props) {
             title: '下一话',
             path: 'ImgPage',
             props: { ...navProps, index: index - 1, article: preArticle, },
-            show: nextArticle
+            show: preArticle
         }
     ];
     // 底部导航 end

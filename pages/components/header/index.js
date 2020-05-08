@@ -3,7 +3,7 @@
  * @Author: Moriaty
  * @Date: 2020-05-07 20:44:22
  * @Last modified by: Moriaty
- * @LastEditTime: 2020-05-07 20:59:08
+ * @LastEditTime: 2020-05-08 09:04:54
  */
 import React, { memo } from 'react';
 import {
@@ -11,7 +11,6 @@ import {
   Text,
   StyleSheet
 } from 'react-native';
-import { pxSize } from '../../../util';
 
 function Index(props) {
   const {

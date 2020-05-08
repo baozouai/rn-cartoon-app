@@ -29,7 +29,7 @@ function Index(props) {
     const listViewProps = {
         onFetch: async (page, startFetch, abortFetch) => {
             if (!isFetchRef.current) {
-                articleListRef.current = await fetchData(page, startFetch, abortFetch, () => getArticleList(bookTitle));
+                articleListRef.current = await fetchData({ page, startFetch, abortFetch, service: () => getArticleList(bookTitle) });
                 isFetchRef.current = true;
             }
         },
