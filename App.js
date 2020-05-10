@@ -5,6 +5,7 @@ import RootPage from './pages/root-page';
 import Brief from './pages/brief';
 import ImgPage from './pages/img-page';
 import CategoryList from './pages/category-list';
+import AboutMe from './pages/about-me';
 
 const AppStack = createStackNavigator(
   {
@@ -23,6 +24,9 @@ const AppStack = createStackNavigator(
     CategoryList: {
       screen: CategoryList,
     },
+    AboutMe: {
+      screen: AboutMe,
+    }
   },
   {
     mode: 'modal',
