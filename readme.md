@@ -66,7 +66,7 @@
 ### 2、打开终端，`cd rn-cartoon-app`,切换到项目根目录，在项目根目录运行以下命令
 
 `npm install`，安装所需的依赖
-
+`react-native run-ios` 运行项目
 ### 4、成功如图
 
 ![首页](./项目截图/首页.png)
